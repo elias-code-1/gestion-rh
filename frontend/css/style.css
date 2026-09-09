@@ -1,0 +1,447 @@
+/* =========================================================
+   DOSSIER RH — thème inspiré du registre / dossier de personnel
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #FBFAF6;
+  --paper-dim: #F2EFE5;
+  --ink: #22303A;
+  --ink-soft: #5B6B73;
+  --line: #D8CFB8;
+  --line-strong: #B9AE8F;
+  --cover: #1B3A3A;
+  --cover-light: #24504C;
+  --ochre: #C08A2E;
+  --ochre-dark: #99691C;
+  --green: #3B6E4E;
+  --green-bg: #E7F0E9;
+  --red: #A63D2F;
+  --red-bg: #F5E7E3;
+  --amber: #B98A1E;
+  --amber-bg: #F6EEDC;
+
+  --font-display: 'Zilla Slab', Georgia, serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+a { color: inherit; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ochre-dark);
+  outline-offset: 2px;
+}
+
+/* ---------- Layout général ---------- */
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar / couverture du dossier ---------- */
+
+.cover {
+  width: 232px;
+  flex-shrink: 0;
+  background: var(--cover);
+  color: #EDE9DA;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 0 20px;
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0 24px 6px;
+  letter-spacing: 0.3px;
+}
+
+.cover-subtitle {
+  font-size: 12.5px;
+  color: #A9C0BA;
+  padding: 0 24px 26px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 18px;
+}
+
+.tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tab {
+  position: relative;
+}
+
+.tab a {
+  display: block;
+  text-decoration: none;
+  color: #CBD9D4;
+  font-size: 14.5px;
+  font-weight: 500;
+  padding: 11px 24px 11px 28px;
+  border-left: 3px solid transparent;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.tab a:hover {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+.tab.active a {
+  background: var(--paper);
+  color: var(--cover);
+  border-left-color: var(--ochre);
+  border-radius: 0 3px 3px 0;
+  margin-right: -1px;
+  font-weight: 600;
+}
+
+.cover-footer {
+  margin-top: auto;
+  padding: 16px 24px 0;
+  font-size: 11.5px;
+  color: #7E9791;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+/* ---------- Contenu principal ---------- */
+
+.content {
+  flex: 1;
+  padding: 36px 44px 60px;
+  max-width: 1100px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+}
+
+/* ---------- Boutons ---------- */
+
+.btn {
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 9px 18px;
+  font-size: 13.5px;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.btn:hover { border-color: var(--ink-soft); }
+
+.btn-primary {
+  background: var(--ochre);
+  border-color: var(--ochre-dark);
+  color: #fff;
+}
+
+.btn-primary:hover { background: var(--ochre-dark); }
+
+.btn-danger {
+  background: var(--paper);
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.btn-danger:hover { background: var(--red-bg); }
+
+.btn-ghost {
+  border-color: transparent;
+  background: transparent;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.btn-ghost:hover { color: var(--ink); text-decoration: underline; }
+
+.btn-sm { padding: 5px 12px; font-size: 12.5px; }
+
+/* ---------- Tableau "registre" ---------- */
+
+.ledger-wrap {
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+table.ledger {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ledger thead th {
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line-strong);
+  white-space: nowrap;
+}
+
+.ledger tbody td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 13.5px;
+  vertical-align: middle;
+}
+
+.ledger tbody tr:hover { background: var(--paper-dim); }
+
+.ledger .col-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.cell-primary { font-weight: 600; }
+.cell-muted { color: var(--ink-soft); }
+
+.empty-row td {
+  text-align: center;
+  padding: 40px 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ---------- Badges de statut ---------- */
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.badge-green { background: var(--green-bg); color: var(--green); }
+.badge-red { background: var(--red-bg); color: var(--red); }
+.badge-amber { background: var(--amber-bg); color: var(--amber); }
+.badge-muted { background: var(--paper-dim); color: var(--ink-soft); }
+
+/* ---------- Tableau de bord ---------- */
+
+.stat-row {
+  display: flex;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+}
+
+.stat {
+  flex: 1;
+  padding: 20px 24px;
+  border-right: 1px solid var(--line);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--cover);
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+/* ---------- Panneau latéral (formulaire) ---------- */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 58, 58, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+  z-index: 20;
+}
+
+.overlay.open { opacity: 1; pointer-events: auto; }
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 400px;
+  max-width: 92vw;
+  background: var(--paper);
+  border-left: 2px solid var(--ink);
+  transform: translateX(100%);
+  transition: transform 200ms ease;
+  z-index: 21;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel.open { transform: translateX(0); }
+
+.panel-header {
+  padding: 22px 26px 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-header h2 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  margin: 0;
+}
+
+.panel-close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  color: var(--ink-soft);
+  line-height: 1;
+  padding: 4px;
+}
+
+.panel-body {
+  padding: 22px 26px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.panel-footer {
+  padding: 16px 26px 22px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* ---------- Formulaires ---------- */
+
+.field { margin-bottom: 16px; }
+
+.field label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--cover);
+}
+
+.field-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-row .field { flex: 1; }
+
+.form-note {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: -6px;
+  margin-bottom: 16px;
+}
+
+/* ---------- États de chargement / erreur ---------- */
+
+.state-msg {
+  padding: 16px 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.state-msg.error { color: var(--red); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 780px) {
+  .app { flex-direction: column; }
+  .cover { width: 100%; flex-direction: row; align-items: center; padding: 14px 16px; overflow-x: auto; }
+  .cover-title, .cover-subtitle, .cover-footer { display: none; }
+  .tabs { flex-direction: row; }
+  .tab a { padding: 8px 14px; border-left: none; border-bottom: 3px solid transparent; }
+  .tab.active a { border-left: none; border-bottom-color: var(--ochre); border-radius: 3px 3px 0 0; margin-right: 0; }
+  .content { padding: 24px 18px 40px; }
+  .stat-row { flex-direction: column; }
+  .stat { border-right: none; border-bottom: 1px solid var(--line); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel, .overlay, .tab a { transition: none; }
+}

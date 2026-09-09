@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier RH — Tableau de bord</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <nav class="cover">
+    <div class="cover-title">Dossier RH</div>
+    <div class="cover-subtitle">Gestion du personnel</div>
+    <ul class="tabs">
+      <li class="tab active"><a href="index.html">Tableau de bord</a></li>
+      <li class="tab"><a href="employes.html">Employés</a></li>
+      <li class="tab"><a href="absences.html">Absences</a></li>
+      <li class="tab"><a href="conges.html">Congés</a></li>
+    </ul>
+    <div class="cover-footer">Frontend — backend à connecter</div>
+  </nav>
+
+  <main class="content">
+    <div class="page-header">
+      <div>
+        <h1>Tableau de bord</h1>
+        <p>Vue d'ensemble du personnel</p>
+      </div>
+    </div>
+
+    <div class="stat-row" id="stat-row">
+      <div class="stat">
+        <div class="stat-value" id="stat-employes">—</div>
+        <div class="stat-label">Employés actifs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="stat-absences">—</div>
+        <div class="stat-label">Absences ce mois-ci</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="stat-conges">—</div>
+        <div class="stat-label">Demandes de congé en attente</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Dernières demandes de congé</h2>
+    <div class="ledger-wrap">
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>Employé</th>
+            <th>Type</th>
+            <th>Période</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody id="dashboard-conges-body">
+          <tr class="empty-row"><td colspan="4">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

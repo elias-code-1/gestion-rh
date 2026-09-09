@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier RH — Absences</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <nav class="cover">
+    <div class="cover-title">Dossier RH</div>
+    <div class="cover-subtitle">Gestion du personnel</div>
+    <ul class="tabs">
+      <li class="tab"><a href="index.html">Tableau de bord</a></li>
+      <li class="tab"><a href="employes.html">Employés</a></li>
+      <li class="tab active"><a href="absences.html">Absences</a></li>
+      <li class="tab"><a href="conges.html">Congés</a></li>
+    </ul>
+    <div class="cover-footer">Frontend — backend à connecter</div>
+  </nav>
+
+  <main class="content">
+    <div class="page-header">
+      <div>
+        <h1>Absences</h1>
+        <p>Suivi des absences ponctuelles</p>
+      </div>
+      <button class="btn btn-primary" id="btn-new-absence">+ Nouvelle absence</button>
+    </div>
+
+    <div class="ledger-wrap">
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>Employé</th>
+            <th>Date</th>
+            <th>Motif</th>
+            <th>Justifiée</th>
+            <th class="col-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="absences-body">
+          <tr class="empty-row"><td colspan="5">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</div>
+
+<!-- Panneau formulaire -->
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel">
+  <div class="panel-header">
+    <h2 id="panel-title">Nouvelle absence</h2>
+    <button class="panel-close" id="panel-close">&times;</button>
+  </div>
+  <form id="absence-form">
+    <div class="panel-body">
+      <input type="hidden" id="absence-id">
+      <div class="field">
+        <label for="absence-employe">Employé</label>
+        <select id="absence-employe" required>
+          <option value="">Sélectionner…</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="absence-date">Date</label>
+        <input type="date" id="absence-date" required>
+      </div>
+      <div class="field">
+        <label for="absence-motif">Motif</label>
+        <input type="text" id="absence-motif" placeholder="Maladie, retard, absence non justifiée…" required>
+      </div>
+      <div class="field">
+        <label for="absence-justifiee">Justifiée ?</label>
+        <select id="absence-justifiee">
+          <option value="true">Oui</option>
+          <option value="false">Non</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="absence-commentaire">Commentaire</label>
+        <textarea id="absence-commentaire" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="button" class="btn" id="btn-cancel">Annuler</button>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+  </form>
+</aside>
+
+<script src="js/api.js"></script>
+<script src="js/absences.js"></script>
+</body>
+</html>

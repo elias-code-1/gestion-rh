@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier RH — Employés</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <nav class="cover">
+    <div class="cover-title">Dossier RH</div>
+    <div class="cover-subtitle">Gestion du personnel</div>
+    <ul class="tabs">
+      <li class="tab"><a href="index.html">Tableau de bord</a></li>
+      <li class="tab active"><a href="employes.html">Employés</a></li>
+      <li class="tab"><a href="absences.html">Absences</a></li>
+      <li class="tab"><a href="conges.html">Congés</a></li>
+    </ul>
+    <div class="cover-footer">Frontend — backend à connecter</div>
+  </nav>
+
+  <main class="content">
+    <div class="page-header">
+      <div>
+        <h1>Employés</h1>
+        <p>Liste du personnel enregistré</p>
+      </div>
+      <button class="btn btn-primary" id="btn-new-employe">+ Nouvel employé</button>
+    </div>
+
+    <div class="ledger-wrap">
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Poste</th>
+            <th>Département</th>
+            <th>Embauché le</th>
+            <th>Statut</th>
+            <th class="col-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="employes-body">
+          <tr class="empty-row"><td colspan="6">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</div>
+
+<!-- Panneau formulaire -->
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel">
+  <div class="panel-header">
+    <h2 id="panel-title">Nouvel employé</h2>
+    <button class="panel-close" id="panel-close">&times;</button>
+  </div>
+  <form id="employe-form">
+    <div class="panel-body">
+      <input type="hidden" id="employe-id">
+      <div class="field-row">
+        <div class="field">
+          <label for="employe-nom">Nom</label>
+          <input type="text" id="employe-nom" required>
+        </div>
+        <div class="field">
+          <label for="employe-prenom">Prénom</label>
+          <input type="text" id="employe-prenom" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="employe-email">Email</label>
+        <input type="email" id="employe-email" required>
+      </div>
+      <div class="field">
+        <label for="employe-telephone">Téléphone</label>
+        <input type="tel" id="employe-telephone">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="employe-poste">Poste</label>
+          <input type="text" id="employe-poste" required>
+        </div>
+        <div class="field">
+          <label for="employe-departement">Département</label>
+          <input type="text" id="employe-departement">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="employe-date-embauche">Date d'embauche</label>
+          <input type="date" id="employe-date-embauche">
+        </div>
+        <div class="field">
+          <label for="employe-statut">Statut</label>
+          <select id="employe-statut">
+            <option value="actif">Actif</option>
+            <option value="inactif">Inactif</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="button" class="btn" id="btn-cancel">Annuler</button>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+  </form>
+</aside>
+
+<script src="js/api.js"></script>
+<script src="js/employes.js"></script>
+</body>
+</html>

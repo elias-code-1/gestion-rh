@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier RH — Congés</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <nav class="cover">
+    <div class="cover-title">Dossier RH</div>
+    <div class="cover-subtitle">Gestion du personnel</div>
+    <ul class="tabs">
+      <li class="tab"><a href="index.html">Tableau de bord</a></li>
+      <li class="tab"><a href="employes.html">Employés</a></li>
+      <li class="tab"><a href="absences.html">Absences</a></li>
+      <li class="tab active"><a href="conges.html">Congés</a></li>
+    </ul>
+    <div class="cover-footer">Frontend — backend à connecter</div>
+  </nav>
+
+  <main class="content">
+    <div class="page-header">
+      <div>
+        <h1>Congés</h1>
+        <p>Demandes de congé du personnel</p>
+      </div>
+      <button class="btn btn-primary" id="btn-new-conge">+ Nouvelle demande</button>
+    </div>
+
+    <div class="ledger-wrap">
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>Employé</th>
+            <th>Type</th>
+            <th>Période</th>
+            <th>Statut</th>
+            <th class="col-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="conges-body">
+          <tr class="empty-row"><td colspan="5">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</div>
+
+<!-- Panneau formulaire -->
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel">
+  <div class="panel-header">
+    <h2 id="panel-title">Nouvelle demande de congé</h2>
+    <button class="panel-close" id="panel-close">&times;</button>
+  </div>
+  <form id="conge-form">
+    <div class="panel-body">
+      <input type="hidden" id="conge-id">
+      <div class="field">
+        <label for="conge-employe">Employé</label>
+        <select id="conge-employe" required>
+          <option value="">Sélectionner…</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="conge-type">Type de congé</label>
+        <select id="conge-type">
+          <option value="paye">Congé payé</option>
+          <option value="maladie">Congé maladie</option>
+          <option value="exceptionnel">Congé exceptionnel</option>
+          <option value="sans_solde">Sans solde</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="conge-debut">Date de début</label>
+          <input type="date" id="conge-debut" required>
+        </div>
+        <div class="field">
+          <label for="conge-fin">Date de fin</label>
+          <input type="date" id="conge-fin" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="conge-statut">Statut</label>
+        <select id="conge-statut">
+          <option value="en_attente">En attente</option>
+          <option value="approuve">Approuvé</option>
+          <option value="refuse">Refusé</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="conge-commentaire">Commentaire</label>
+        <textarea id="conge-commentaire" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="button" class="btn" id="btn-cancel">Annuler</button>
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+  </form>
+</aside>
+
+<script src="js/api.js"></script>
+<script src="js/conges.js"></script>
+</body>
+</html>
