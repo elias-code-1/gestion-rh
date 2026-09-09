@@ -35,7 +35,7 @@ app.post('/api/employes', (req, res, next) => {
         ...req.body
     });
     employes.save()
-    .then(employes => res.status(201).json(employe))
+    .then(employes => res.status(201).json(employes))
     .catch(error => res.status(400).json({error}));
 })
 // TODO: app.get('/api/employes', ...)
