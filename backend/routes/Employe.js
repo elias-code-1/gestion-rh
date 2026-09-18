@@ -12,7 +12,7 @@ router.get('/', employeCtrl.getEmploye);
 
 // TODO: app.put('/api/employes/:id', ...)
 
- app.put('/:id', employeCtrl.editEmploye);
+ router.put('/:id', employeCtrl.editEmploye);
 
 // TODO: app.delete('/api/employes/:id', ...)
  

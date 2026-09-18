@@ -35,16 +35,7 @@ router.use(express.json());
 
 // TODO: app.post('/api/employes', ...)
 
-router.post('/api/employes',Ctrl.createEmploye)
-// TODO: app.get('/api/employes', ...)
 
-router.get('/api/employes', getEmploye);
-// TODO: app.put('/api/employes/:id', ...)
- app.put('/api/employes/:id', editEmploye);
-
-// TODO: app.delete('/api/employes/:id', ...)
- 
-router.delete('/api/employes/:id',deleteEmploye);
 
 // ============================================================================
 // ROUTES ABSENCES — base : /api/absences
