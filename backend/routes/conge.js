@@ -5,10 +5,10 @@ const router = express.Router();
 const congeCtrl = require('../controllers/conge');
 
 
-router.get('/', congeCtrl.createConge);
+router.get('/', congeCtrl.getConge);
 // TODO: app.post('/api/conges', ...)
 
-router.post('/', congeCtrl.getConge);
+router.post('/', congeCtrl.createConge);
 // TODO: app.put('/api/conges/:id', ...)
 router.put('/:id', congeCtrl.editConge);
 // TODO: app.delete('/api/conges/:id', ...)

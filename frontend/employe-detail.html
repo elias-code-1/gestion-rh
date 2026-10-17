@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dossier RH — Fiche employé</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <nav class="cover">
+    <div class="cover-title">Dossier RH</div>
+    <div class="cover-subtitle">Gestion du personnel</div>
+    <ul class="tabs">
+      <li class="tab"><a href="index.html">Tableau de bord</a></li>
+      <li class="tab active"><a href="employes.html">Employés</a></li>
+      <li class="tab"><a href="absences.html">Absences</a></li>
+      <li class="tab"><a href="conges.html">Congés</a></li>
+    </ul>
+    <div class="cover-footer">Frontend — backend à connecter</div>
+  </nav>
+
+  <main class="content">
+    <a href="employes.html" class="back-link">&larr; Retour à la liste des employés</a>
+
+    <div class="page-header" id="fiche-header">
+      <div>
+        <h1 id="fiche-nom">Chargement…</h1>
+        <p id="fiche-poste"></p>
+      </div>
+    </div>
+
+    <div class="fiche-info-grid" id="fiche-info-grid"></div>
+
+    <h2 class="section-title">Historique des absences</h2>
+    <div class="ledger-wrap">
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Motif</th>
+            <th>Justifiée</th>
+            <th>Commentaire</th>
+          </tr>
+        </thead>
+        <tbody id="fiche-absences-body">
+          <tr class="empty-row"><td colspan="4">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 36px;">Historique des congés</h2>
+    <div class="ledger-wrap">
+      <table class="ledger">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Période</th>
+            <th>Statut</th>
+            <th>Commentaire</th>
+          </tr>
+        </thead>
+        <tbody id="fiche-conges-body">
+          <tr class="empty-row"><td colspan="4">Chargement…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth-guard.js"></script>
+<script src="js/employe-detail.js"></script>
+</body>
+</html>

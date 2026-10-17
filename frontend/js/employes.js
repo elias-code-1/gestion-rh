@@ -34,14 +34,15 @@ function renderEmployes() {
     return;
   }
 
-  tbody.innerHTML = employesCache.map((e) => `
+    tbody.innerHTML = employesCache.map((e) => `
     <tr>
-      <td class="cell-primary">${escapeHtml(e.prenom)} ${escapeHtml(e.nom)}</td>
+      <td class="cell-primary"><a href="employe-detail.html?id=${e._id}">${escapeHtml(e.prenom)} ${escapeHtml(e.nom)}</a></td>
       <td>${escapeHtml(e.poste || '—')}</td>
       <td class="cell-muted">${escapeHtml(e.departement || '—')}</td>
       <td class="cell-muted">${formatDate(e.dateEmbauche)}</td>
       <td>${statutBadge(e.statut)}</td>
       <td class="col-actions">
+        <a class="btn btn-ghost btn-sm" href="employe-detail.html?id=${e._id}">Fiche</a>
         <button class="btn btn-ghost btn-sm" onclick="openEditEmploye('${e._id}')">Modifier</button>
         <button class="btn btn-ghost btn-sm" onclick="deleteEmploye('${e._id}')">Supprimer</button>
       </td>
