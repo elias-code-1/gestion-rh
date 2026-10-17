@@ -29,7 +29,7 @@
  * -----------------------------------------------------------------------
  */
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = '/api';
 
 /**
  * Effectue une requête HTTP vers l'API et retourne le JSON parsé.
