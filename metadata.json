@@ -1,0 +1,7 @@
+{
+  "name": "Dossier RH",
+  "description": "Application de gestion du personnel RH : employés, absences et congés",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

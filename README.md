@@ -1,114 +1,63 @@
-# Gestion RH
+# Dossier RH
 
-Application de gestion des ressources humaines : suivi des employés, des absences et des congés. Développée pour pratiquer la construction d'une API REST avec Node.js, Express et MongoDB (Mongoose), connectée à un frontend HTML/CSS/JS vanilla.
-
-## Fonctionnalités
-
-- **Employés** : création, consultation, modification et suppression des fiches employés (nom, poste, département, date d'embauche, statut)
-- **Absences** : déclaration et suivi des absences, rattachées à un employé
-- **Congés** : demandes de congés (payé, maladie, exceptionnel, sans solde) avec statut (en attente / approuvé / refusé)
-- **Dashboard** : vue d'ensemble de l'activité RH
+Application de gestion des ressources humaines avec une vitrine d’accueil, un tableau de bord et des espaces pour les collaborateurs, les congés, les absences, les entretiens, les formations et les opérations RH.
 
 ## Stack technique
 
-**Backend**
-- Node.js / Express
-- MongoDB Atlas via Mongoose
-- CORS pour la communication avec le frontend
+- **Frontend** : React, TypeScript, Vite, Tailwind CSS et Lucide
+- **Backend** : Node.js, Express et Mongoose
+- **Base de données** : MongoDB
 
-**Frontend**
-- HTML / CSS / JavaScript vanilla (pas de framework)
-- Un fichier JS dédié par page/fonctionnalité (`employes.js`, `absences.js`, `conges.js`, `dashboard.js`)
-- `api.js` : client HTTP partagé (fetch wrapper) pour tous les appels à l'API
+Les pages HTML dans `frontend/` sont conservées pour l’ancienne interface. L’application React se trouve dans `src/`.
 
-## Structure du projet
+## Prérequis
 
-```
-gestion-rh/
-├── backend/
-│   ├── models/
-│   │   ├── Employe.js
-│   │   ├── Absence.js
-│   │   └── Conge.js
-│   ├── app.js          # config Express + routes CRUD
-│   ├── server.js        # démarrage du serveur HTTP
-│   └── package.json
-└── frontend/
-    ├── index.html
-    ├── employes.html
-    ├── absences.html
-    ├── conges.html
-    ├── css/
-    │   └── style.css
-    └── js/
-        ├── api.js
-        ├── dashboard.js
-        ├── employes.js
-        ├── absences.js
-        └── conges.js
-```
+- Node.js 18 ou plus récent
+- npm
+- Une instance MongoDB pour utiliser les fonctions de persistance
 
-## Installation
+## Installation et lancement
 
-### Prérequis
-- Node.js (v18 ou plus)
-- Un cluster MongoDB Atlas (ou une instance MongoDB locale)
-
-### Backend
+Depuis la racine du dépôt :
 
 ```bash
-cd backend
 npm install
+npm install --prefix backend
+npm run dev
 ```
 
-Crée un fichier `.env` à la racine de `backend/` :
+La commande `npm run dev` construit l’interface puis démarre le serveur Express. Ouvrez ensuite [http://localhost:3000](http://localhost:3000), ou le port défini par `PORT`.
 
-```
-MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/gestion-rh?retryWrites=true&w=majority
-PORT=5000
-```
+Pour conserver les sources de configuration locales, créez ou complétez `backend/.env` :
 
-Lance le serveur :
-
-```bash
-npm start
+```dotenv
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/gestion-rh
 ```
 
-Tu dois voir dans la console :
-```
-Server running on port: 5000
-Connexion à MongoDB réussie !
-```
+Remplacez l’URI par celle de votre instance MongoDB. Le serveur peut démarrer sans `MONGODB_URI`, mais les routes qui enregistrent des données nécessitent une connexion à MongoDB.
 
-### Frontend
+## Commandes utiles
 
-Ouvre simplement `frontend/index.html` dans un navigateur, ou sers le dossier avec une extension type Live Server. Le frontend est configuré pour appeler l'API sur `http://localhost:5000/api`.
+| Commande | Description |
+| --- | --- |
+| `npm run dev` | Construit l’interface et démarre le serveur Express |
+| `npm start` | Démarre le serveur Express (après un build avec `npm run build`) |
+| `npm run build` | Génère l’interface de production dans `dist/` |
+| `npm run lint` | Vérifie les types TypeScript |
 
-## API — Endpoints
+## Fonctionnalités
 
-### Employés
-| Méthode | Route | Description |
-|---|---|---|
-| GET | `/api/employes` | Liste tous les employés |
-| POST | `/api/employes` | Crée un employé |
-| PUT | `/api/employes/:id` | Modifie un employé |
-| DELETE | `/api/employes/:id` | Supprime un employé |
+- Tableau de bord RH et indicateurs
+- Dossiers collaborateurs et organigramme
+- Congés, absences, calendrier et feuilles de temps
+- Onboarding, entretiens, compétences, formations et objectifs
+- Salaires, primes, notes de frais et titres-restaurant
+- Documents, matériels, alertes, registre du personnel et journal d’audit
 
-### Absences
-| Méthode | Route | Description |
-|---|---|---|
-| GET | `/api/absences` | Liste toutes les absences |
-| POST | `/api/absences` | Déclare une absence |
-| PUT | `/api/absences/:id` | Modifie une absence |
-| DELETE | `/api/absences/:id` | Supprime une absence |
+## API
 
-### Congés
-| Méthode | Route | Description |
-|---|---|---|
-| GET | `/api/conges` | Liste toutes les demandes de congé |
-| POST | `/api/conges` | Crée une demande de congé |
-| PUT | `/api/conges/:id` | Modifie une demande de congé |
-| DELETE | `/api/conges/:id` | Supprime une demande de congé |
+L’API est servie sur le même hôte que l’application sous `/api`. Les données métier sont persistées par MongoDB via Mongoose.
 
 ## Auteur
 

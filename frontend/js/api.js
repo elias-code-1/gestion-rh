@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const API_BASE_URL = 'http://localhost:5000/api';
 const TOKEN_KEY = 'rh_token';
 const USER_KEY = 'rh_user';
@@ -20,6 +21,40 @@ const auth = {
     window.location.href = 'login.html';
   },
 };
+=======
+/**
+ * api.js
+ * -----------------------------------------------------------------------
+ * Petit client HTTP partagé par toutes les pages.
+ * Le backend (Node.js / Express / MongoDB via Mongoose) n'existe pas encore :
+ * change simplement API_BASE_URL une fois qu'il tourne (ex: http://localhost:5000/api).
+ *
+ * Routes REST attendues côté backend (à adapter si besoin) :
+ *
+ *   Employés
+ *     GET    /employes            -> liste des employés
+ *     POST   /employes            -> créer un employé
+ *     PUT    /employes/:id        -> modifier un employé
+ *     DELETE /employes/:id        -> supprimer un employé
+ *
+ *   Absences
+ *     GET    /absences            -> liste des absences (avec employeNom si possible)
+ *     POST   /absences
+ *     PUT    /absences/:id
+ *     DELETE /absences/:id
+ *
+ *   Congés
+ *     GET    /conges
+ *     POST   /conges
+ *     PUT    /conges/:id
+ *     DELETE /conges/:id
+ *
+ * Champs suggérés : voir les commentaires en tête de chaque fichier JS de page.
+ * -----------------------------------------------------------------------
+ */
+
+const API_BASE_URL = '/api';
+>>>>>>> e0ad2c8980dd6c95b09dfab7f20d7beaf1e79364
 
 /**
  * Effectue une requête HTTP vers l'API et retourne le JSON parsé.
